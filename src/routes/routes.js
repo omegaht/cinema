@@ -1,5 +1,5 @@
 import AppBar from 'components/AppBar';
-import { Home } from 'components/Home';
+// import { Home } from 'components/Home';
 import NotFound from 'components/NotFound';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
@@ -14,7 +14,7 @@ const Routes = () => {
 		<>
 			<AppBar />
 			<Switch>
-				<Route path={HOME} component={Temp} />
+				<Route exact path={HOME} component={Temp} />
 				<Route path={NOTFOUND} component={NotFound} />
 			</Switch>
 		</>

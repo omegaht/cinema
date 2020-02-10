@@ -1,4 +1,4 @@
-import { SNACKBAR_CLEAR, SNACKBAR_SUCCESS } from 'redux/actionTypes';
+import { SNACKBAR_CLEAR, SNACKBAR_DISPLAY } from 'redux/actionTypes';
 
 const initialState = {
 	open: false,
@@ -8,8 +8,7 @@ const initialState = {
 
 const snackbarReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case SNACKBAR_SUCCESS:
-			console.log(action);
+		case SNACKBAR_DISPLAY:
 			return {
 				...state,
 				open: true,

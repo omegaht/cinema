@@ -1,8 +1,8 @@
-import { SNACKBAR_SUCCESS, SNACKBAR_CLEAR } from 'redux/actionTypes';
+import { SNACKBAR_DISPLAY, SNACKBAR_CLEAR } from 'redux/actionTypes';
 
 export const showSnackbar = (message, kind) => {
 	return dispatch => {
-		dispatch({ type: SNACKBAR_SUCCESS, message, kind });
+		dispatch({ type: SNACKBAR_DISPLAY, message, kind });
 	};
 };
 

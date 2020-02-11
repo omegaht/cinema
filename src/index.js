@@ -5,9 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from 'redux/store.js';
+import Snackbar from 'components/Snackbar';
 
 ReactDOM.render(
 	<Provider store={store}>
+		<Snackbar />
 		<App />
 	</Provider>,
 	document.getElementById('root')

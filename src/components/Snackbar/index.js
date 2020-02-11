@@ -7,7 +7,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { clearSnackbar } from 'redux/actions/snackbarActions';
 
 const Alert = props => {
-	return <MuiAlert elevation={6} variant="filled" {...props} />;
+	return <MuiAlert elevation={6} variant='filled' {...props} />;
 };
 
 const Snackbar = () => {
@@ -26,9 +26,9 @@ const Snackbar = () => {
 			open={open}
 			autoHideDuration={4000}
 			onClose={handleClose}
-			aria-describedby="client-snackbar"
+			aria-describedby='client-snackbar'
 			action={[
-				<IconButton key="close" aria-label="close" color="inherit" onClick={handleClose}>
+				<IconButton key='close' aria-label='close' color='inherit' onClick={handleClose}>
 					<CloseIcon />
 				</IconButton>
 			]}

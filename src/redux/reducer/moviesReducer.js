@@ -1,10 +1,11 @@
-import { GET_MOVIES_SUCCESS } from 'redux/actionTypes';
+import { GET_MOVIES_SUCCESS, GET_MOVIE_DETAIL } from 'redux/actionTypes';
 
 const initialState = {
 	page: '',
 	movies: [],
 	total_pages: '',
-	total_results: ''
+	total_results: '',
+	selectedMovie: ''
 };
 
 const moviesReducer = (state = initialState, action) => {
@@ -21,10 +22,10 @@ const moviesReducer = (state = initialState, action) => {
 				//   total_results: action.payload.data.total_results
 				movies: action.payload
 			};
-		case 'GET_MOVIES_FAIL':
+		case GET_MOVIE_DETAIL:
 			return {
-				error: action.payload.error,
-				errorStatus: action.payload.status
+				...state,
+				selectedMovie: action.payload
 			};
 		case 'CLEAR_MOVIES':
 			return { ...initialState };

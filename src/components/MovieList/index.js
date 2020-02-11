@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const MovieList = ({ movies }) => {
+const MovieList = ({ movies, onMovieClick }) => {
 	const classes = useStyles();
 
 	return (
@@ -38,7 +38,7 @@ const MovieList = ({ movies }) => {
 								<IconButton
 									aria-label={`info about ${movie.title}`}
 									className={classes.icon}
-									onClick={() => console.log('movie clicked')}
+									onClick={() => onMovieClick(movie.id)}
 								>
 									<InfoIcon />
 								</IconButton>

@@ -1,8 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search';
+import debounce from 'lodash/debounce';
+import React from 'react';
+import { searchMovie, fetchMovies } from 'redux/actions/moviesActions';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
 	search: {
@@ -42,8 +44,17 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const SerchBar = props => {
+const SearchBar = props => {
 	const classes = useStyles();
+
+	const handleSearchTextChange = event => {
+		const text = event.target.value;
+		if (text !== '') {
+			props.searchMovie(text);
+		} else {
+			props.fetchMovies();
+		}
+	};
 
 	return (
 		<div className={classes.search}>
@@ -51,17 +62,16 @@ const SerchBar = props => {
 				<SearchIcon />
 			</div>
 			<InputBase
-				placeholder="Search…"
+				placeholder='Search…'
 				classes={{
 					root: classes.inputRoot,
 					input: classes.inputInput
 				}}
 				inputProps={{ 'aria-label': 'search' }}
+				onChange={handleSearchTextChange}
 			/>
 		</div>
 	);
 };
 
-SerchBar.propTypes = {};
-
-export default SerchBar;
+export default connect(null, { searchMovie, fetchMovies })(SearchBar);

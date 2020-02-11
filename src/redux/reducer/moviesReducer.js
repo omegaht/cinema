@@ -1,4 +1,4 @@
-import { GET_MOVIES_SUCCESS, GET_MOVIE_DETAIL } from 'redux/actionTypes';
+import { GET_MOVIES_SUCCESS, GET_MOVIE_DETAIL, SEARCH_MOVIE } from 'redux/actionTypes';
 
 const initialState = {
 	page: '',
@@ -27,8 +27,8 @@ const moviesReducer = (state = initialState, action) => {
 				...state,
 				selectedMovie: action.payload
 			};
-		case 'CLEAR_MOVIES':
-			return { ...initialState };
+		case SEARCH_MOVIE:
+			return { ...state, movies: action.payload };
 		default:
 			return state;
 	}

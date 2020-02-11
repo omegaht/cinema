@@ -6,11 +6,10 @@ import { fetchMovies, getMovieDetail } from 'redux/actions/moviesActions';
 import MovieDetail from 'components/MovieDetail';
 
 const Movies = props => {
-	/** Get the movies */
 	useEffect(() => {
 		props.fetchMovies();
 	}, []);
-	/** Handling for movie selection */
+
 	const [displayMovieDetail, setDisplayMovieDetail] = useState(false);
 
 	const handleMovieItemClick = id => {

@@ -4,6 +4,9 @@ import { showSnackbar } from 'redux/actions/snackbarActions';
 import MovieList from 'components/MovieList';
 import { fetchMovies, getMovieDetail } from 'redux/actions/moviesActions';
 import MovieDetail from 'components/MovieDetail';
+import Rating from 'react-rating';
+import FilledStar from 'assets/images/star-full.png';
+import EmptyStar from 'assets/images/star-empty.png';
 
 const Movies = props => {
 	useEffect(() => {
@@ -24,6 +27,12 @@ const Movies = props => {
 			{displayMovieDetail && (
 				<MovieDetail movie={props.selectedMovie} onClose={handleMovieDetailClose} open={displayMovieDetail} />
 			)}
+			<Rating
+				start={0}
+				stop={5}
+				emptySymbol={<img src={EmptyStar} className='icon' alt='empty star' />}
+				fullSymbol={<img src={FilledStar} className='icon' alt='filled star' />}
+			/>
 			<MovieList movies={props.movies} onMovieClick={handleMovieItemClick} />
 		</>
 	);

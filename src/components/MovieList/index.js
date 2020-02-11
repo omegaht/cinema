@@ -33,7 +33,7 @@ const MovieList = ({ movies, onMovieClick }) => {
 						<img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
 						<GridListTileBar
 							title={movie.title}
-							subtitle={<span>popularity: {movie.popularity}</span>}
+							subtitle={<span>popularity: {movie.vote_average}</span>}
 							actionIcon={
 								<IconButton
 									aria-label={`info about ${movie.title}`}

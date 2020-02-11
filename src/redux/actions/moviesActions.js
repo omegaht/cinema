@@ -51,3 +51,20 @@ export const searchMovie = text => {
 		}
 	};
 };
+
+export const fetchMoviesByRating = rating => {
+	return async dispatch => {
+		try {
+			const {
+				data: { results }
+			} = await axios.get(`${URL_DISCOVER}?api_key=${process.env.REACT_APP_API_KEY}&vote_average.lte=${rating}`);
+			console.log('jejeje', results);
+			dispatch({
+				type: GET_MOVIES_SUCCESS,
+				payload: results
+			});
+		} catch (error) {
+			showSnackbar(error.message, 'error');
+		}
+	};
+};

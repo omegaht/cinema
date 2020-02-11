@@ -24,6 +24,7 @@ const StarRating = props => {
 				step={props.step}
 				emptySymbol={<img src={EmptyStar} className='icon' alt='empty star' />}
 				fullSymbol={<img src={FilledStar} className='icon' alt='filled star' />}
+				onClick={props.onClick}
 			/>
 		</div>
 	);

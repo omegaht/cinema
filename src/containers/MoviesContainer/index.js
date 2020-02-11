@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { showSnackbar } from 'redux/actions/snackbarActions';
 import MovieList from 'components/MovieList';
-import { fetchMovies, getMovieDetail } from 'redux/actions/moviesActions';
+import { fetchMovies, getMovieDetail, fetchMoviesByRating } from 'redux/actions/moviesActions';
 import MovieDetail from 'components/MovieDetail';
 import StarRating from 'components/StarRating';
 
@@ -20,12 +20,14 @@ const Movies = props => {
 
 	const handleMovieDetailClose = () => setDisplayMovieDetail(false);
 
+	const handleFilterByRating = value => props.fetchMoviesByRating(value);
+
 	return (
 		<>
 			{displayMovieDetail && (
 				<MovieDetail movie={props.selectedMovie} onClose={handleMovieDetailClose} open={displayMovieDetail} />
 			)}
-			<StarRating start={0} stop={10} step={2} />
+			<StarRating start={0} stop={10} step={2} onClick={handleFilterByRating} />
 			<MovieList movies={props.movies} onMovieClick={handleMovieItemClick} />
 		</>
 	);
@@ -38,4 +40,4 @@ const mapStateToProps = ({ moviesState }) => ({
 	selectedMovie: moviesState.selectedMovie
 });
 
-export default connect(mapStateToProps, { showSnackbar, fetchMovies, getMovieDetail })(Movies);
+export default connect(mapStateToProps, { showSnackbar, fetchMovies, getMovieDetail, fetchMoviesByRating })(Movies);

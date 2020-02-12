@@ -20,14 +20,19 @@ const Movies = props => {
 
 	const handleMovieDetailClose = () => setDisplayMovieDetail(false);
 
-	const handleFilterByRating = value => props.fetchMoviesByRating(value);
+	const [rating, setRating] = useState(0);
+
+	const handleFilterByRating = value => {
+		setRating(value);
+		props.fetchMoviesByRating(value);
+	};
 
 	return (
 		<>
 			{displayMovieDetail && (
 				<MovieDetail movie={props.selectedMovie} onClose={handleMovieDetailClose} open={displayMovieDetail} />
 			)}
-			<StarRating start={0} stop={10} step={2} onClick={handleFilterByRating} />
+			<StarRating start={0} stop={10} step={2} onClick={handleFilterByRating} placeholder={rating} />
 			<MovieList movies={props.movies} onMovieClick={handleMovieItemClick} />
 		</>
 	);

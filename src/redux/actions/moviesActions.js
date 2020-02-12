@@ -2,16 +2,16 @@ import axios from 'axios';
 import { showSnackbar } from './snackbarActions';
 import { GET_MOVIES_SUCCESS, GET_MOVIE_DETAIL, SEARCH_MOVIE } from 'redux/actionTypes';
 
-const URL_DISCOVER = 'https://api.themoviedb.org/3/discover/movie';
+const URL_DISCOVER = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}`;
 const URL_MOVIE = 'https://api.themoviedb.org/3/movie';
-const URL_SEARCH = 'https://api.themoviedb.org/3/search/movie';
+const URL_SEARCH = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}`;
 
 export const fetchMovies = (sortBy = 'popularity.desc') => {
 	return async dispatch => {
 		try {
 			const {
 				data: { results }
-			} = await axios.get(`${URL_DISCOVER}?api_key=${process.env.REACT_APP_API_KEY}&sort_by=${sortBy}`);
+			} = await axios.get(`${URL_DISCOVER}&sort_by=${sortBy}`);
 			dispatch({
 				type: GET_MOVIES_SUCCESS,
 				payload: results
@@ -41,7 +41,7 @@ export const searchMovie = text => {
 		try {
 			const {
 				data: { results }
-			} = await axios.get(`${URL_SEARCH}?api_key=${process.env.REACT_APP_API_KEY}&query=${text}`);
+			} = await axios.get(`${URL_SEARCH}&query=${text}`);
 			dispatch({
 				type: SEARCH_MOVIE,
 				payload: results
@@ -57,8 +57,7 @@ export const fetchMoviesByRating = rating => {
 		try {
 			const {
 				data: { results }
-			} = await axios.get(`${URL_DISCOVER}?api_key=${process.env.REACT_APP_API_KEY}&vote_average.lte=${rating}`);
-			console.log('jejeje', results);
+			} = await axios.get(`${URL_DISCOVER}&vote_average.lte=${rating}&sort_by=popularity.desc`);
 			dispatch({
 				type: GET_MOVIES_SUCCESS,
 				payload: results

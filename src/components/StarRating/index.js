@@ -15,16 +15,17 @@ const ratingStyle = {
 const StarRating = props => {
 	return (
 		<div style={ratingStyle.container}>
-			<Typography gutterBottom variant='h5' component='h2'>
+			<Typography gutterBottom variant="h5" component="h2">
 				Filter by rating:
 			</Typography>
 			<Rating
 				start={props.start}
 				stop={props.stop}
 				step={props.step}
-				emptySymbol={<img src={EmptyStar} className='icon' alt='empty star' />}
-				fullSymbol={<img src={FilledStar} className='icon' alt='filled star' />}
+				emptySymbol={<img src={EmptyStar} className="icon" alt="empty star" />}
+				fullSymbol={<img src={FilledStar} className="icon" alt="filled star" />}
 				onClick={props.onClick}
+				placeholderRating={props.placeholder}
 			/>
 		</div>
 	);

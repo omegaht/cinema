@@ -1,8 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi! this a small app for the movie theater, had to rush a bit with the UI so it's really simple and kind of ugly )=.
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn`
+
+To get all the dependencies prior to start.
 
 ### `yarn start`
 

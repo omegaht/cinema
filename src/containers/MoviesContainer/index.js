@@ -38,8 +38,6 @@ const Movies = props => {
 	);
 };
 
-Movies.propTypes = {};
-
 const mapStateToProps = ({ moviesState }) => ({
 	movies: moviesState.movies,
 	selectedMovie: moviesState.selectedMovie
